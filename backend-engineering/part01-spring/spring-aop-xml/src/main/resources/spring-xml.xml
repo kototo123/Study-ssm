@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <bean id="calculatorPure" class="com.kototo.spring.aop.CalculatorPureImpl"/>
+
+    <bean id="logAspect" class="com.kototo.spring.aop.LogAspect"/>
+
+    <bean id="validateAspect" class="com.kototo.spring.aop.ValidateAspect"/>
+
+    <aop:config>
+        <aop:pointcut id="pointCut" expression="execution(* *..*.*(*,*))"/>
+        <aop:aspect ref="logAspect" order="100">
+            <aop:before method="beforeLog" pointcut-ref="pointCut"/>
+            <aop:after-returning method="afterReturningLog" pointcut-ref="pointCut" returning="result"/>
+            <aop:after-throwing method="prirntLogAfterException" pointcut-ref="pointCut" throwing="ex"/>
+            <aop:after method="printLogFinallyEnd" pointcut-ref="pointCut"/>
+        </aop:aspect>
+        <aop:aspect ref="validateAspect" order="99">
+            <aop:before method="checkNum" pointcut-ref="pointCut"/>
+        </aop:aspect>
+    </aop:config>
+</beans>

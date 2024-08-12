@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="newsUser" class="com.kototo.spring.xml.pojo.NewsUser">
+        <property name="username" value="kototo"/>
+        <property name="password" value="1234"/>
+    </bean>
+
+    <bean id="newsUserDao" class="com.kototo.spring.xml.dao.impl.NewsUserDaoImpl"/>
+
+    <bean id="newsUserService" class="com.kototo.spring.xml.service.impl.NewsUserServiceImpl">
+        <property name="newsUserDao" ref="newsUserDao"/>
+    </bean>
+
+    <bean id="newsUserController" class="com.kototo.spring.xml.controller.NewsUserController">
+        <property name="newsUserService" ref="newsUserService"/>
+    </bean>
+</beans>
