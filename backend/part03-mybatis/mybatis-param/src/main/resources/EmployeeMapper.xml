@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kototo.mybatis.mapper.com.kototo.mybatis.result.EmployeeMapper">
+    
+    <select id="selectAll" resultType="Employee">
+        select emp_id , emp_name , emp_salary  from t_emp
+    </select>
+
+<!--    #{} preparedStatement可以防止sql注入-->
+    <select id="selectEmpById" resultType="Employee">
+        select emp_id , emp_name , emp_salary  from t_emp
+        where emp_id = #{empId}
+    </select>
+<!--    ${} Statement可能发生sql注入-->
+    <select id="selectEmpById2" resultType="Employee">
+        select emp_id , emp_name , emp_salary  from t_emp
+        where emp_id = ${empId}
+    </select>
+<!--    #{} 会自动在传的值前后加单引号  能用#{}的 肯定不用${}-->
+    <select id="selectAllOrder" resultType="Employee">
+        select emp_id , emp_name , emp_salary  from t_emp
+        order by emp_salary ${rules}
+    </select>
+
+    <insert id="insertEmp">
+        insert into t_emp(emp_name, emp_salary)
+        value (#{empName}, #{empSalary})
+    </insert>
+
+    <select id="selectEmpByNameAndSalary" resultType="Employee">
+        select emp_id , emp_name , emp_salary  from t_emp
+        where emp_name = #{empName} and emp_salary = #{empSalary}
+    </select>
+<!--    传入多个参数 封装Map 用Key取参数-->
+    <select id="selectEmpByMap" resultType="Employee">
+        select emp_id, emp_name , emp_salary  from t_emp
+        where emp_name = #{empName} and emp_salary = #{empSalary}
+    </select>
+    
+
+</mapper>

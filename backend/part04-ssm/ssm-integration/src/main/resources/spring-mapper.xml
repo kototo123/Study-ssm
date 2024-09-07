@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+<!--    引入外部属性配置文件-->
+    <context:property-placeholder location="classpath:jdbc.properties"/>
+<!--    创建连接池-->
+    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
+        <property name="driverClassName" value="${jdbc.driverClassName}"/>
+        <property name="url" value="${jdbc.url}"/>
+        <property name="username" value="${jdbc.username}"/>
+        <property name="password" value="${jdbc.password}"/>
+    </bean>
+<!--    装配SQLSessionFactory-->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+<!--        创建连接源-->
+        <property name="dataSource" ref="dataSource"/>
+<!--        指定核心文件-->
+        <property name="configLocation" value="classpath:mybatis-config.xml"/>
+<!--        注册映射文件-->
+        <property name="mapperLocations" value="classpath:mappers/*Mapper.xml"/>
+    </bean>
+
+<!--    mapper的动态代理对象，交由Spring管理-->
+
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.kototo.ssm.mapper"/>
+    </bean>
+</beans>

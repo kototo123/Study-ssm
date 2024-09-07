@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kototo.mybatis.other.mapper.EmployeeMapper">
+
+    <sql id="baseEmpSelect">
+        select emp_id, emp_name, emp_salary, dept_id from t_emp
+    </sql>
+
+    <select id="selectEmpByCondition" resultType="Employee">
+        <include refid="baseEmpSelect"></include>
+        <where>
+            <if test="empName != null">
+                emp_name = #{empName}
+            </if>
+            <if test="empSalary != null">
+                and emp_salary = #{empSalary}
+            </if>
+            <if test="deptId != null">
+                and dept_id = #{deptId}
+            </if>
+        </where>
+    </select>
+
+    <update id="updateByCondition">
+#         update t_emp
+<!--        <trim prefix="set" suffix="where emp_id = #{empId}" prefixOverrides="," suffixOverrides=",">-->
+<!--            <if test="empName != null">-->
+<!--                emp_name = #{empName},-->
+<!--            </if>-->
+<!--            <if test="empSalary != null">-->
+<!--                emp_salary = #{empSalary},-->
+<!--            </if>-->
+<!--            <if test="deptId != null">-->
+<!--                dept_id = #{deptId},-->
+<!--            </if>-->
+<!--            emp_id = #{empId}-->
+<!--        </trim>-->
+        update t_emp
+        <set>
+            <if test="empName != null">
+                emp_name = #{empName},
+            </if>
+            <if test="empSalary != null">
+                emp_salary = #{empSalary},
+            </if>
+            <if test="deptId != null">
+                dept_id = #{deptId},
+            </if>
+            emp_id = #{empId}
+        </set>
+        where emp_id = #{empId}
+    </update>
+
+    <select id="selectEmpTrimByCondition" resultType="Employee">
+        <include refid="baseEmpSelect"></include>
+        <trim prefix="where" prefixOverrides="and|or" suffixOverrides="and|or">
+            <if test="empName != null">
+                emp_name = #{empName} and
+            </if>
+            <if test="empSalary != null">
+                emp_salary = #{empSalary} and
+            </if>
+            <if test="deptId != null">
+                dept_id = #{deptId}
+            </if>
+        </trim>
+    </select>
+
+    <select id="selectEmpByChoose" resultType="Employee">
+        <include refid="baseEmpSelect"></include>
+        where
+            <choose>
+                <when test="empName != null">emp_name = #{empName}</when>
+                <when test="empSalary != null">emp_salary = #{empSalary}</when>
+                <when test="deptId != null">dept_id = #{deptId}</when>
+                <otherwise>1=1</otherwise>
+            </choose>
+    </select>
+
+    <select id="selectEmpByForeach" resultType="Employee">
+        <include refid="baseEmpSelect"></include>
+        where emp_id in
+        <foreach collection="list" item="id" separator="," open="(" close=")">
+            #{id}
+        </foreach>
+    </select>
+
+    <insert id="insertEmpByBatch">
+        insert into t_emp (emp_name, emp_salary, dept_id)
+        values
+        <foreach collection="list" item="emp" separator=",">
+            (#{emp.empName}, #{emp.empSalary}, #{emp.deptId})
+        </foreach>
+    </insert>
+
+    <update id="updateEmpByBatch">
+        <foreach collection="list" item="emp" separator=";">
+            update t_emp set emp_salary = #{emp.empSalary} where emp_id = #{emp.empId}
+        </foreach>
+    </update>
+</mapper>

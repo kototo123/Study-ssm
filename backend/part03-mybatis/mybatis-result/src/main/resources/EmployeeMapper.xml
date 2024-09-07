@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kototo.mybatis.result.mapper.EmployeeMapper">
+
+    <select id="selectEmpCount" resultType="Integer">
+        select count(*) from t_emp
+    </select>
+
+    <select id="selectMaxSalary" resultType="Double">
+        select max(emp_salary) from t_emp
+    </select>
+
+    <select id="selectEmpBySalary" resultType="Employee">
+        select emp_id, emp_name, emp_salary from t_emp
+        where emp_salary = #{empSalary}
+    </select>
+
+    <select id="selectSalary" resultType="Map">
+        select max(emp_salary), min(emp_salary), avg(emp_salary) from t_emp
+    </select>
+
+    <insert id="insertEmp" useGeneratedKeys="true" keyProperty="empId" >
+        insert into t_emp(emp_name, emp_salary)
+        value (#{empName},#{empSalary})
+    </insert>
+    
+    <resultMap id="baseEmp" type="Employee">
+        <id property="empId" column="emp_id"/>
+        <result property="empName" column="emp_name"/>
+        <result property="empSalary" column="emp_salary"/>
+    </resultMap>
+    <select id="selectEmp" resultMap="baseEmp">
+        select emp_id, emp_name, emp_salary from t_emp
+        where emp_id = #{empId}
+    </select>
+</mapper>

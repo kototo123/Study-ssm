@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="springmvc-response" />
+        <module name="springmvc-rest" />
+        <module name="springmvc-exceptionhandler" />
+        <module name="spring-xml" />
+        <module name="mybatis-more-relation" />
+        <module name="springmvc-file" />
+        <module name="spring-transaction" />
+        <module name="springmvc-param" />
+        <module name="mybatis-relation" />
+        <module name="mybatis-dynamic" />
+        <module name="springmvc-rest-test" />
+        <module name="ssm-integration" />
+        <module name="spring-aop-annotation" />
+        <module name="mybatis-quick" />
+        <module name="ssm-integration-end" />
+        <module name="spring-annotation" />
+        <module name="spring-jdbcTemplate" />
+        <module name="springmvc-base" />
+        <module name="spring-transaction-xml" />
+        <module name="mybatis-result" />
+        <module name="spring-aop-xml" />
+        <module name="mybatis-param" />
+        <module name="mybatis-other" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel target="17">
+      <module name="spring-part (1)" target="17" />
+      <module name="spring-part (2)" target="17" />
+      <module name="springmvc" target="17" />
+      <module name="springmvc-base (2)" target="17" />
+      <module name="springmvc-exceptionhandler (1)" target="17" />
+      <module name="springmvc-exceptionhandler (2)" target="17" />
+      <module name="springmvc-file (1)" target="17" />
+      <module name="springmvc-file (2)" target="17" />
+      <module name="springmvc-param (1)" target="17" />
+      <module name="springmvc-param (2)" target="17" />
+      <module name="springmvc-response (1)" target="17" />
+      <module name="springmvc-response (2)" target="17" />
+      <module name="springmvc-rest (1)" target="17" />
+      <module name="springmvc-rest (2)" target="17" />
+      <module name="springmvc-rest-test (1)" target="17" />
+      <module name="springmvc-rest-test (2)" target="17" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

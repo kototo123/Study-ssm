@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kototo.mybatis.relation.mapper.DepartmentMapper">
+    
+    <resultMap id="baseDeptAndEmps" type="Department">
+        <id property="deptId" column="dept_id"/>
+        <result property="deptName" column="dept_name"/>
+<!--        维护多个 collection 维护的是集合 所以ofType-->
+        <collection property="employeeList" ofType="Employee">
+            <id property="empId" column="emp_id"/>
+            <result property="empName" column="emp_name"/>
+            <result property="empSalary" column="emp_salary"/>
+        </collection>
+    </resultMap>
+    <select id="selectDeptAndEmpsById" resultMap="baseDeptAndEmps">
+        select emp_id, emp_name, emp_salary, t_dept.dept_id, dept_name
+        from t_emp inner join t_dept on t_emp.dept_id = t_dept.dept_id
+        where t_dept.dept_id = #{deptId}
+    </select>
+
+</mapper>

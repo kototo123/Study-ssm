@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kototo.mybatis.more.mapper.TeacherMapper">
+
+    <resultMap id="baseTeacher" type="Teacher">
+        <id property="tId" column="t_id"/>
+<!--        <result property="tName" column="t_name"/>-->
+        <collection property="studentList" ofType="Student">
+            <id property="sId" column="s_id"/>
+<!--            <result property="sName" column="s_name"/>-->
+        </collection>
+    </resultMap>
+    <select id="selectAllTeacher" resultMap="baseTeacher">
+        select t_teacher.t_id, t_name, t_student.s_id, s_name
+        from t_teacher
+        inner join t_inner on t_inner.t_id = t_teacher.t_id
+        inner join t_student on  t_inner.s_id = t_student.s_id
+
+    </select>
+
+</mapper>
