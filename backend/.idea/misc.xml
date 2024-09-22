@@ -9,6 +9,12 @@
         <option value="$PROJECT_DIR$/part02-springmvc/pom.xml" />
         <option value="$PROJECT_DIR$/part03-mybatis/pom.xml" />
         <option value="$PROJECT_DIR$/part04-ssm/pom.xml" />
+        <option value="$PROJECT_DIR$/part05-springboot/pom.xml" />
+        <option value="$PROJECT_DIR$/springboot-configfile/pom.xml" />
+        <option value="$PROJECT_DIR$/springboot-hello/pom.xml" />
+        <option value="$PROJECT_DIR$/redis-jedis/pom.xml" />
+        <option value="$PROJECT_DIR$/spingboot-redis/pom.xml" />
+        <option value="$PROJECT_DIR$/springboot-lua/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">

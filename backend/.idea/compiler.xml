@@ -7,29 +7,38 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="springmvc-response" />
-        <module name="springmvc-rest" />
-        <module name="springmvc-exceptionhandler" />
+        <module name="redis-jedis" />
         <module name="spring-xml" />
-        <module name="mybatis-more-relation" />
         <module name="springmvc-file" />
-        <module name="spring-transaction" />
         <module name="springmvc-param" />
         <module name="mybatis-relation" />
-        <module name="mybatis-dynamic" />
-        <module name="springmvc-rest-test" />
-        <module name="ssm-integration" />
+        <module name="springboot-hello" />
         <module name="spring-aop-annotation" />
         <module name="mybatis-quick" />
         <module name="ssm-integration-end" />
+        <module name="springboot-starter" />
+        <module name="mybatis-result" />
+        <module name="mybatis-param" />
+        <module name="mybatis-other" />
+        <module name="springmvc-response" />
+        <module name="springboot-configfile" />
+        <module name="springmvc-rest" />
+        <module name="springboot-use" />
+        <module name="springmvc-exceptionhandler" />
+        <module name="spingboot-redis" />
+        <module name="mybatis-more-relation" />
+        <module name="spring-transaction" />
+        <module name="mybatis-dynamic" />
+        <module name="springboot-lua" />
+        <module name="springmvc-rest-test" />
+        <module name="ssm-integration" />
+        <module name="springboot-task" />
         <module name="spring-annotation" />
         <module name="spring-jdbcTemplate" />
         <module name="springmvc-base" />
+        <module name="springboot-mybatis" />
         <module name="spring-transaction-xml" />
-        <module name="mybatis-result" />
         <module name="spring-aop-xml" />
-        <module name="mybatis-param" />
-        <module name="mybatis-other" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="17">
@@ -50,5 +59,17 @@
       <module name="springmvc-rest-test (1)" target="17" />
       <module name="springmvc-rest-test (2)" target="17" />
     </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="spingboot-redis" options="-parameters" />
+      <module name="springboot-configfile" options="-parameters" />
+      <module name="springboot-hello" options="-parameters" />
+      <module name="springboot-lua" options="-parameters" />
+      <module name="springboot-mybatis" options="-parameters" />
+      <module name="springboot-starter" options="-parameters" />
+      <module name="springboot-task" options="-parameters" />
+      <module name="springboot-use" options="-parameters" />
+    </option>
   </component>
 </project>

@@ -1,0 +1,4 @@
+spring.jdbc.datasource.driverClassName=com.mysql.cj.jdbc.driver
+spring.jdbc.datasource.url=jdbc:mysql:///example
+spring.jdbc.datasource.username=root
+spring.jdbc.datasource.password=root

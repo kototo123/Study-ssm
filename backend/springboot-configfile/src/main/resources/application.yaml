@@ -1,0 +1,19 @@
+#spring.jdbc.datasource.driverClassName=com.mysql.cj.jdbc.driver
+#spring.jdbc.datasource.url=jdbc:mysql:///example
+#spring.jdbc.datasource.username=root
+#spring.jdbc.datasource.password=root
+#spring:
+#  jdbc:
+#    datasource:
+#      driverClassName: com.mysql.cj.jdbc.driver
+#      url: jdbc:mysql:///example
+#      username: root
+#      password: kototo
+
+server:
+  port: 8082
+  servlet:
+    context-path: /kototo
+spring:
+  profiles:
+    active: test
